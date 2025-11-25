@@ -3,8 +3,69 @@ body {
     font-family: Arial, sans-serif;
     background: #5a8893;
     padding-top: 40px;
+    overflow-x: hidden; /* prevents scrolling when sidebar slides out */
 }
 
+/* ==== SIDEBAR ==== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* hidden by default */
+    width: 250px;
+    height: 100%;
+    background: #2a4e57;
+    color: white;
+    padding: 20px;
+    transition: 0.3s ease;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+/* Sidebar active (opened) */
+.sidebar.active {
+    left: 0;
+}
+
+/* ==== MENU TOGGLE BUTTON ==== */
+.menu-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Hamburger bars */
+.menu-toggle .bar {
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin: 5px;
+    background: #fff;
+    border-radius: 4px;
+}
+
+/* ==== MAIN TO-DO UI ==== */
 .list-box {
     background: rgb(255, 255, 255);
     width: 350px;
@@ -13,7 +74,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px #ccc;
     position: relative;
-    top: 300px;
+    top: 200px;
 }
 
 #taskInput {
@@ -46,15 +107,4 @@ li {
 li.completed {
     text-decoration: line-through;
     color: gray;
-}
-
-.menu-toggle {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    background-color: antiquewhite;
-    size: 100px;
-    padding: 10px;
-    border-radius: 5px;
 }
