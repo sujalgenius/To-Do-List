@@ -43,3 +43,37 @@ function addTask() {
     taskList.appendChild(li);
     input.value = "";
 }
+
+function addTask() {
+    const taskText = input.value.trim();
+    if (taskText === "") return;
+
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+        <span>${taskText}</span>
+        <button class="deleteBtn">X</button>
+    `;
+
+    // Add fade-in animation
+    setTimeout(() => {
+        li.classList.add("show");
+    }, 10);
+
+    // Toggle complete
+    li.addEventListener("click", function(e) {
+        if (e.target.tagName !== "BUTTON") {
+            li.classList.toggle("completed");
+        }
+    });
+
+    // Delete animation
+    li.querySelector(".deleteBtn").addEventListener("click", function() {
+        li.classList.add("removing"); // fade out
+        setTimeout(() => li.remove(), 300); // wait for animation
+    });
+
+    taskList.appendChild(li);
+    input.value = "";
+}
+
